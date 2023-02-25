@@ -31,7 +31,7 @@ addEventListener('fetch', (event: FetchEvent) => {
   
 
 	data.NMI = input_nmi;
-	let selection = 0;
+	let selection = input_nmi;
 	data.StateTerritory = nmi_info[selection].state;
 	data.OutageLink = nmi_info[selection].Website;
 	data.Distributor = nmi_info[selection].Provider_name;
