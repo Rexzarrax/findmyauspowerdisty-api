@@ -16,6 +16,9 @@ addEventListener('fetch', (event: FetchEvent) => {
 	let input_nmi = searchParams.get('input_nmi')
 
 	data.NMI = input_nmi;
+	data.StateTerritory = "StateVic";
+	data.OutageLink = "www";
+	data.Distributor = "PC";
   
 	const json = JSON.stringify(data, null, 2);
   
