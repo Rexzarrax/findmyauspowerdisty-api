@@ -23,32 +23,27 @@ addEventListener('fetch', (event: FetchEvent) => {
 	nmi_info.push({state:"NSW",Provider_name:"Ausgrid",Alphafrom:"NCCC000000",AlphaToo:"NCCCZZZZZZ",AlphaExeclude:"NCCCW",NumFrom:"4102000000",NumTo:"4104999999",Website:"https://www.ausgrid.com.au/Outages/Current-Outages"})
 	nmi_info.push({state:"NSW",Provider_name:"Essential Energy",Alphafrom:"NDDD000000",AlphaToo:"NDDDZZZZZZ",AlphaExeclude:"NDDDW",NumFrom:"4204000000",NumTo:"4204999999",Website:"https://www.essentialenergy.com.au/outages-and-faults/power-outages"})
 	nmi_info.push({state:"NSW",Provider_name:"Endeavour Energy",Alphafrom:"NEEE000000",AlphaToo:"NEEEZZZZZZ",AlphaExeclude:"NEEEW",NumFrom:"4310000000",NumTo:"4319999999",Website:"https://www.endeavourenergy.com.au/outages/current-power-outages"})
-	nmi_info.push({state:"NSW",Provider_name:"Essential Energy",Alphafrom:"NFFF000000",AlphaToo:"NFFFZZZZZZ",AlphaExeclude:"NFFFW",NumFrom:"4407000000",NumTo:"4407999999",Website:"https://www.essentialenergy.com.au/outages-and-faults/power-outages"})
+	nmi_info.push({state:"",Provider_name:"Essential Energy",Alphafrom:"NFFF000000",AlphaToo:"NFFFZZZZZZ",AlphaExeclude:"NFFFW",NumFrom:"4407000000",NumTo:"4407999999",Website:"https://www.essentialenergy.com.au/outages-and-faults/power-outages"})
   
 
 	data.NMI = input_nmi;
 	nmi_info.forEach((element, index) => {
 		if (element.Alphafrom.indexOf(input_nmi)){
-
-			
 			data.StateTerritory = nmi_info[index].state;
 			data.OutageLink = nmi_info[index].Website;
 			data.Distributor = nmi_info[index].Provider_name;
-			throw "break";
 		}
 		if (element.NumFrom.indexOf(input_nmi)){
-
 			data.StateTerritory = nmi_info[index].state;
 			data.OutageLink = nmi_info[index].Website;
 			data.Distributor = nmi_info[index].Provider_name;
-			throw "break";
 		}
-
+	});
+	if (data.StateTerritory == ""){
 		data.StateTerritory = "no Data";
 		data.OutageLink = "no Data";
 		data.Distributor = "no Data";
-	});
-
+	} 
 
 
   
