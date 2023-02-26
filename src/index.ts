@@ -2,10 +2,6 @@ export{}
 addEventListener('fetch', (event: FetchEvent) => {
 	event.respondWith(handleRequest(event.request))
 });
-  function compareNMI(title: string): string {
-	const m = title.match(/#(\d+)/);
-	return m ? m[1] : ""; 
-  }
   async function handleRequest(request: Request) {
 	const data = {
 	  StateTerritory: '',
@@ -48,9 +44,9 @@ addEventListener('fetch', (event: FetchEvent) => {
 			throw "break";
 		}
 
-		data.StateTerritory = "Error or no Data";
-		data.OutageLink = "Error or no Data";
-		data.Distributor = "Error or no Data";
+		data.StateTerritory = "no Data";
+		data.OutageLink = "no Data";
+		data.Distributor = "no Data";
 	});
 
 
