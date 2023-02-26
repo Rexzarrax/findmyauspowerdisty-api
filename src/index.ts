@@ -11,7 +11,7 @@ addEventListener('fetch', (event: FetchEvent) => {
 	};
 
 	const { searchParams } = new URL(request.url)
-	let input_nmi: string = searchParams.get('input_nmi')
+	let str_input_nmi: string = searchParams.get('input_nmi')
 
 	const nmi_info: Nmi_entry[] = [];
 
@@ -25,19 +25,26 @@ addEventListener('fetch', (event: FetchEvent) => {
 	nmi_info.push({state:"",Provider_name:"Essential Energy",Alphafrom:"NFFF000000",AlphaToo:"NFFFZZZZZZ",AlphaExeclude:"NFFFW",NumFrom:"4407000000",NumTo:"4407999999",Website:"https://www.essentialenergy.com.au/outages-and-faults/power-outages"})
   
 
-	data.NMI = input_nmi;
-	nmi_info.forEach((element, index) => {
-		if (element.Alphafrom.indexOf(input_nmi)){
-			data.StateTerritory = nmi_info[index].state;
-			data.OutageLink = nmi_info[index].Website;
-			data.Distributor = nmi_info[index].Provider_name;
-		}
-		if (element.NumFrom.indexOf(input_nmi)){
-			data.StateTerritory = nmi_info[index].state;
-			data.OutageLink = nmi_info[index].Website;
-			data.Distributor = nmi_info[index].Provider_name;
-		}
-	});
+	data.NMI = str_input_nmi;
+	try {
+		nmi_info.forEach((element, index) => {
+			if (element.Alphafrom.indexOf(str_input_nmi)){
+				data.StateTerritory = nmi_info[index].state;
+				data.OutageLink = nmi_info[index].Website;
+				data.Distributor = nmi_info[index].Provider_name;
+				throw "break";
+			}
+			if (element.NumFrom.indexOf(str_input_nmi)){
+				data.StateTerritory = nmi_info[index].state;
+				data.OutageLink = nmi_info[index].Website;
+				data.Distributor = nmi_info[index].Provider_name;
+				throw "break";
+			}
+		});
+	} catch (e){
+		console.log(e);
+	}
+
 
 	if (data.StateTerritory === ""){
 		data.StateTerritory = "no Data";
