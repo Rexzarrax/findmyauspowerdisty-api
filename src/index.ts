@@ -11,10 +11,9 @@ addEventListener('fetch', (event: FetchEvent) => {
 	};
 
 	const { searchParams } = new URL(request.url)
-	let input_nmi = searchParams.get('input_nmi')
+	let input_nmi: string = searchParams.get('input_nmi')
 
 	const nmi_info: Nmi_entry[] = [];
-	//let nmi_info = new Map<"1"|"2"|"3"|"4"|"5"|"6"|"7"|"8",Nmi_entry>();
 
 	nmi_info.push({state:"ACT",Provider_name:"Evoenergy",Alphafrom:"NGGG000000",AlphaToo:"NGGGZZZZZZ",AlphaExeclude:"NGGGW",NumFrom:"7001000000",NumTo:"7001999999",Website:"https://www.evoenergy.com.au/residents/emergencies-faults-outages/outages"})
 	nmi_info.push({state:"ACT",Provider_name:"Evoenergy",Alphafrom:"AAtniW00001",AlphaToo:"AtniWZZZZZ",AlphaExeclude:"",NumFrom:"",NumTo:"",Website:"https://www.evoenergy.com.au/residents/emergencies-faults-outages/outages"})
@@ -27,7 +26,7 @@ addEventListener('fetch', (event: FetchEvent) => {
   
 
 	data.NMI = input_nmi;
-	/*nmi_info.forEach((element, index) => {
+	nmi_info.forEach((element, index) => {
 		if (element.Alphafrom.indexOf(input_nmi)){
 			data.StateTerritory = nmi_info[index].state;
 			data.OutageLink = nmi_info[index].Website;
@@ -38,9 +37,7 @@ addEventListener('fetch', (event: FetchEvent) => {
 			data.OutageLink = nmi_info[index].Website;
 			data.Distributor = nmi_info[index].Provider_name;
 		}
-	});*/
-	data.StateTerritory = nmi_info[Number.parseInt(input_nmi)].state;
-	data.OutageLink = nmi_info[Number.parseInt(input_nmi)].Website;
+	});
 
 	if (data.StateTerritory === ""){
 		data.StateTerritory = "no Data";
