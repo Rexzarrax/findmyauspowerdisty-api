@@ -31,9 +31,11 @@ addEventListener('fetch', (event: FetchEvent) => {
 			try {
 				if (element.Alphafrom.indexOf(str_input_nmi)){
 					int_calc_index = index;
+					throw "break";
 				}
 				if (element.NumFrom.indexOf(str_input_nmi)){
 					int_calc_index = index;
+					throw "break";
 				}
 			} catch (e){
 				console.log(e);
