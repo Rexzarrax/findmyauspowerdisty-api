@@ -27,7 +27,7 @@ addEventListener('fetch', (event: FetchEvent) => {
   
 
 	data.NMI = input_nmi;
-	nmi_info.forEach((element, index) => {
+	/*nmi_info.forEach((element, index) => {
 		if (element.Alphafrom.indexOf(input_nmi)){
 			data.StateTerritory = nmi_info[index].state;
 			data.OutageLink = nmi_info[index].Website;
@@ -38,7 +38,10 @@ addEventListener('fetch', (event: FetchEvent) => {
 			data.OutageLink = nmi_info[index].Website;
 			data.Distributor = nmi_info[index].Provider_name;
 		}
-	});
+	});*/
+	data.StateTerritory = nmi_info[Number.parseInt(input_nmi)].state;
+	data.OutageLink = nmi_info[Number.parseInt(input_nmi)].Website;
+
 	if (data.StateTerritory === ""){
 		data.StateTerritory = "no Data";
 	} 
