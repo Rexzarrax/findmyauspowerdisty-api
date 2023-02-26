@@ -26,8 +26,8 @@ addEventListener('fetch', (event: FetchEvent) => {
   
 
 	data.NMI = str_input_nmi;
-	try {
 		nmi_info.forEach((element, index) => {
+			try {
 			if (element.Alphafrom.indexOf(str_input_nmi)){
 				data.StateTerritory = nmi_info[index].state;
 				data.OutageLink = nmi_info[index].Website;
@@ -40,10 +40,11 @@ addEventListener('fetch', (event: FetchEvent) => {
 				data.Distributor = nmi_info[index].Provider_name;
 				throw "break";
 			}
+		} catch (e){
+			console.log(e);
+		}
 		});
-	} catch (e){
-		console.log(e);
-	}
+
 
 
 	if (data.StateTerritory === ""){
