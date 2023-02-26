@@ -39,10 +39,14 @@ addEventListener('fetch', (event: FetchEvent) => {
 			data.Distributor = nmi_info[index].Provider_name;
 		}
 	});
-	if (data.StateTerritory == ""){
+	if (data.StateTerritory === ""){
 		data.StateTerritory = "no Data";
+	} 
+	if (data.OutageLink === ""){
 		data.OutageLink = "no Data";
-		data.Distributor = "no Data";
+	} 
+	if (data.Distributor  === ""){
+		data.Distributor  = "no Data";
 	} 
 
 
