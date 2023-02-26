@@ -31,10 +31,30 @@ addEventListener('fetch', (event: FetchEvent) => {
   
 
 	data.NMI = input_nmi;
-	let selection = Number.parseInt(input_nmi);
-	data.StateTerritory = nmi_info[selection].state;
-	data.OutageLink = nmi_info[selection].Website;
-	data.Distributor = nmi_info[selection].Provider_name;
+
+	nmi_info.forEach((element, index) => {
+		if (element.Alphafrom.indexOf(input_nmi)){
+
+			let selection = Number.parseInt(input_nmi);
+			data.StateTerritory = nmi_info[index].state;
+			data.OutageLink = nmi_info[index].Website;
+			data.Distributor = nmi_info[index].Provider_name;
+			break;
+		}
+		if (element.NumFrom.indexOf(input_nmi)){
+
+			let selection = Number.parseInt(input_nmi);
+			data.StateTerritory = nmi_info[index].state;
+			data.OutageLink = nmi_info[index].Website;
+			data.Distributor = nmi_info[index].Provider_name;
+			break;
+		}
+
+		data.StateTerritory = "Error or no Data";
+		data.OutageLink = "Error or no Data";
+		data.Distributor = "Error or no Data";
+	});
+
 
 
   
