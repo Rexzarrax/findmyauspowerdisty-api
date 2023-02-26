@@ -15,28 +15,28 @@ addEventListener('fetch', (event: FetchEvent) => {
 
 	const nmi_info: Nmi_entry[] = [];
 
-	nmi_info.push({state:"ACT",Provider_name:"Evoenergy",Alphafrom:"NGGG000000",AlphaToo:"NGGGZZZZZZ",AlphaExeclude:"NGGGW",NumFrom:"7001000000",NumTo:"7001999999",Website:"https://www.evoenergy.com.au/residents/emergencies-faults-outages/outages"})
-	nmi_info.push({state:"ACT",Provider_name:"Evoenergy",Alphafrom:"AAtniW00001",AlphaToo:"AtniWZZZZZ",AlphaExeclude:"",NumFrom:"",NumTo:"",Website:"https://www.evoenergy.com.au/residents/emergencies-faults-outages/outages"})
-	nmi_info.push({state:"NSW",Provider_name:"Essential Energy",Alphafrom:"NAAA000000",AlphaToo:"NAAAZZZZZZ",AlphaExeclude:"NAAAW",NumFrom:"4001000000",NumTo:"4001999999",Website:"https://www.essentialenergy.com.au/outages-and-faults/power-outages"})
-	nmi_info.push({state:"NSW",Provider_name:"Essential Energy",Alphafrom:"NBBB000000",AlphaToo:"NBBBZZZZZZ",AlphaExeclude:"NBBBW",NumFrom:"4508000000",NumTo:"4508099999",Website:"https://www.essentialenergy.com.au/outages-and-faults/power-outages"})
+	nmi_info.push({state:"ACT",Provider_name:"Evoenergy1",Alphafrom:"NGGG000000",AlphaToo:"NGGGZZZZZZ",AlphaExeclude:"NGGGW",NumFrom:"7001000000",NumTo:"7001999999",Website:"https://www.evoenergy.com.au/residents/emergencies-faults-outages/outages"})
+	nmi_info.push({state:"ACT",Provider_name:"Evoenergy2",Alphafrom:"AAtniW00001",AlphaToo:"AtniWZZZZZ",AlphaExeclude:"",NumFrom:"",NumTo:"",Website:"https://www.evoenergy.com.au/residents/emergencies-faults-outages/outages"})
+	nmi_info.push({state:"NSW",Provider_name:"Essential Energy1",Alphafrom:"NAAA000000",AlphaToo:"NAAAZZZZZZ",AlphaExeclude:"NAAAW",NumFrom:"4001000000",NumTo:"4001999999",Website:"https://www.essentialenergy.com.au/outages-and-faults/power-outages"})
+	nmi_info.push({state:"NSW",Provider_name:"Essential Energy2",Alphafrom:"NBBB000000",AlphaToo:"NBBBZZZZZZ",AlphaExeclude:"NBBBW",NumFrom:"4508000000",NumTo:"4508099999",Website:"https://www.essentialenergy.com.au/outages-and-faults/power-outages"})
 	nmi_info.push({state:"NSW",Provider_name:"Ausgrid",Alphafrom:"NCCC000000",AlphaToo:"NCCCZZZZZZ",AlphaExeclude:"NCCCW",NumFrom:"4102000000",NumTo:"4104999999",Website:"https://www.ausgrid.com.au/Outages/Current-Outages"})
-	nmi_info.push({state:"NSW",Provider_name:"Essential Energy",Alphafrom:"NDDD000000",AlphaToo:"NDDDZZZZZZ",AlphaExeclude:"NDDDW",NumFrom:"4204000000",NumTo:"4204999999",Website:"https://www.essentialenergy.com.au/outages-and-faults/power-outages"})
+	nmi_info.push({state:"NSW",Provider_name:"Essential Energy3",Alphafrom:"NDDD000000",AlphaToo:"NDDDZZZZZZ",AlphaExeclude:"NDDDW",NumFrom:"4204000000",NumTo:"4204999999",Website:"https://www.essentialenergy.com.au/outages-and-faults/power-outages"})
 	nmi_info.push({state:"NSW",Provider_name:"Endeavour Energy",Alphafrom:"NEEE000000",AlphaToo:"NEEEZZZZZZ",AlphaExeclude:"NEEEW",NumFrom:"4310000000",NumTo:"4319999999",Website:"https://www.endeavourenergy.com.au/outages/current-power-outages"})
-	nmi_info.push({state:"",Provider_name:"Essential Energy",Alphafrom:"NFFF000000",AlphaToo:"NFFFZZZZZZ",AlphaExeclude:"NFFFW",NumFrom:"4407000000",NumTo:"4407999999",Website:"https://www.essentialenergy.com.au/outages-and-faults/power-outages"})
+	nmi_info.push({state:"NSW",Provider_name:"Essential Energy4",Alphafrom:"NFFF000000",AlphaToo:"NFFFZZZZZZ",AlphaExeclude:"NFFFW",NumFrom:"4407000000",NumTo:"4407999999",Website:"https://www.essentialenergy.com.au/outages-and-faults/power-outages"})
   
 
 	data.NMI = str_input_nmi;
 	let int_calc_index: number;
 	try {
 		nmi_info.forEach((element, index) => {
-				if (element.Alphafrom.indexOf(str_input_nmi)){
-					int_calc_index = index;
-					throw "break";
-				}
-				if (element.NumFrom.indexOf(str_input_nmi)){
-					int_calc_index = index;
-					throw "break";
-				}})
+			if (element.Alphafrom.indexOf(str_input_nmi) == 0){
+				int_calc_index = index;
+				throw "break";
+			}
+			if (element.NumFrom.indexOf(str_input_nmi) == 0){
+				int_calc_index = index;
+				throw "break";
+			}})
 
 	} catch (e){
 		console.log(e);
