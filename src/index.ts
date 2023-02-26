@@ -39,7 +39,6 @@ addEventListener('fetch', (event: FetchEvent) => {
 			data.StateTerritory = nmi_info[index].state;
 			data.OutageLink = nmi_info[index].Website;
 			data.Distributor = nmi_info[index].Provider_name;
-			break;
 		}
 		if (element.NumFrom.indexOf(input_nmi)){
 
@@ -47,7 +46,6 @@ addEventListener('fetch', (event: FetchEvent) => {
 			data.StateTerritory = nmi_info[index].state;
 			data.OutageLink = nmi_info[index].Website;
 			data.Distributor = nmi_info[index].Provider_name;
-			break;
 		}
 
 		data.StateTerritory = "Error or no Data";
