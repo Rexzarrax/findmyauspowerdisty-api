@@ -28,12 +28,13 @@ addEventListener('fetch', (event: FetchEvent) => {
 	data.NMI = str_input_nmi;
 	let int_calc_index: number;
 	try {
+		//If the NMI starts with a number check the first 5 chars, otherise, first 4?
 		nmi_info.forEach((element, index) => {
 			if (element.Alphafrom.indexOf(str_input_nmi) == 0){
 				int_calc_index = index;
 				throw "break";
 			}
-			if (element.NumFrom.indexOf(str_input_nmi) == 0){
+			if (Number.parseInt(element.NumFrom) <= Number.parseInt(str_input_nmi) && Number.parseInt(str_input_nmi) <= Number.parseInt(element.NumTo) ){
 				int_calc_index = index;
 				throw "break";
 			}})
