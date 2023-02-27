@@ -37,8 +37,17 @@ addEventListener('fetch', (event: FetchEvent) => {
 	nmi_info.push({state:"TAS",Provider_name:"TasNetworks TNSP",Alphafrom:"TtniW00001",AlphaToo:"TtniWZZZZZ",AlphaExeclude:"",NumFrom:"",NumTo:"",Website:"https://www.tasnetworks.com.au/outages"})
 	nmi_info.push({state:"VIC",Provider_name:"CitiPower Pty",Alphafrom:"VAAA000000",AlphaToo:"VAAAZZZZZZ",AlphaExeclude:"VAAAW",NumFrom:"6102000000",NumTo:"6103999999",Website:"https://www.citipower.com.au/power-outages-and-faults/live-outage-map/"})
 	nmi_info.push({state:"VIC",Provider_name:"Ausnet Services DNSP",Alphafrom:"VBBB000000",AlphaToo:"VBBBZZZZZZ",AlphaExeclude:"VBBBW",NumFrom:"6305000000",NumTo:"6306999999",Website:"https://www.outagetracker.com.au/"})
-	nmi_info.push({state:"VIC",Provider_name:"Powercor Australia",Alphafrom:"VCCC000000",AlphaToo:"VCCCZZZZZZ",AlphaExeclude:"VCCCW",NumFrom:"6203000000",NumTo:"6204999999",Website:"https://www.outagetracker.com.au/"})
-
+	nmi_info.push({state:"VIC",Provider_name:"Powercor Australia",Alphafrom:"VCCC000000",AlphaToo:"VCCCZZZZZZ",AlphaExeclude:"VCCCW",NumFrom:"6203000000",NumTo:"6204999999",Website:"https://www.powercor.com.au/power-outages-and-faults/live-outage-map/"})
+	nmi_info.push({state:"VIC",Provider_name:"Jemena Electricity Networks (Vic) Ltd",Alphafrom:"VDDD000000",AlphaToo:"VDDDZZZZZZ",AlphaExeclude:"VDDDW",NumFrom:"6001000000",NumTo:"6001999999",Website:"https://poweroutages.jemena.com.au/"})
+	nmi_info.push({state:"VIC",Provider_name:"United Energy Distribution Pty Ltd",Alphafrom:"VEEE000001",AlphaToo:"VEEEZZZZZZ",AlphaExeclude:"VEEEW",NumFrom:"6407000000",NumTo:"6408999999",Website:"https://www.unitedenergy.com.au/outage-map/"})
+	nmi_info.push({state:"VIC",Provider_name:"Ausnet Services TNSP",Alphafrom:"VtniW00001",AlphaToo:"VtniWZZZZZ",AlphaExeclude:"",NumFrom:"6509000000",NumTo:"6509009999",Website:"https://www.outagetracker.com.au/"})
+	nmi_info.push({state:"WA",Provider_name:"Western Power",Alphafrom:"WAAA000000",AlphaToo:"WAAAZZZZZZ",AlphaExeclude:"WAAAW",NumFrom:"8001000000",NumTo:"8020999999",Website:"https://www.westernpower.com.au/faults-outages/power-outages/?"})
+	nmi_info.push({state:"WA",Provider_name:"Horizon Power",Alphafrom:"",AlphaToo:"",AlphaExeclude:"",NumFrom:"8021000000",NumTo:"8021999999",Website:"https://www.horizonpower.com.au/faults-outages/?q="})
+	nmi_info.push({state:"MISC",Provider_name:"Exempt & Miscellaneous Networks - various",Alphafrom:"NKKKNR0000",AlphaToo:"NKKKNRZZZZ",AlphaExeclude:"",NumFrom:"7102000001",NumTo:"7102999999",Website:"Various sites"})
+	nmi_info.push({state:"MISC",Provider_name:"Embedded Network Managers - Child NMIs",Alphafrom:"",AlphaToo:"",AlphaExeclude:"",NumFrom:"7102000001",NumTo:"7106999999",Website:"Various sites"})
+	nmi_info.push({state:"MISC",Provider_name:"AEMO Reserved block 1",Alphafrom:"",AlphaToo:"",AlphaExeclude:"",NumFrom:"8801000000",NumTo:"8805999999",Website:"Reserved Block"})
+	nmi_info.push({state:"MISC",Provider_name:"AEMO Reserved block 2",Alphafrom:"",AlphaToo:"",AlphaExeclude:"",NumFrom:"9000000000",NumTo:"9999999999",Website:"Reserved Block"})
+	
 
 
 	data.NMI = str_input_nmi;
