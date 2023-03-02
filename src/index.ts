@@ -3,17 +3,16 @@ addEventListener('fetch', (event: FetchEvent) => {
 	event.respondWith(handleRequest(event.request))
 });
   async function handleRequest(request: Request) {
-	const data = {
-	  StateTerritory: '',
-	  Distributor: '',
-	  OutageLink: '',
-	  NMI:''
-	};
-
 	const { searchParams } = new URL(request.url)
 	let str_input_nmi: string = searchParams.get('input_nmi')
 
 	const nmi_info: Nmi_entry[] = [];
+	const data = {
+		StateTerritory: 'no Data',
+		Distributor: 'no Data',
+		OutageLink: 'no Data',
+		NMI:str_input_nmi
+	  };
 
 	nmi_info.push({state:"ACT",Provider_name:"Evoenergy",Alphafrom:"NGGG000000",AlphaToo:"NGGGZZZZZZ",AlphaExeclude:"NGGGW",NumFrom:"7001000000",NumTo:"7001999999",Website:"https://www.evoenergy.com.au/residents/emergencies-faults-outages/outages"})
 	nmi_info.push({state:"ACT",Provider_name:"Evoenergy",Alphafrom:"AAtniW00001",AlphaToo:"AtniWZZZZZ",AlphaExeclude:"",NumFrom:"",NumTo:"",Website:"https://www.evoenergy.com.au/residents/emergencies-faults-outages/outages"})
@@ -48,10 +47,8 @@ addEventListener('fetch', (event: FetchEvent) => {
 	nmi_info.push({state:"MISC",Provider_name:"AEMO Reserved block 1",Alphafrom:"",AlphaToo:"",AlphaExeclude:"",NumFrom:"8801000000",NumTo:"8805999999",Website:"Reserved Block"})
 	nmi_info.push({state:"MISC",Provider_name:"AEMO Reserved block 2",Alphafrom:"",AlphaToo:"",AlphaExeclude:"",NumFrom:"9000000000",NumTo:"9999999999",Website:"Reserved Block"})
 	
-
-
-	data.NMI = str_input_nmi;
-	let int_input_nmi_pad:number = Number.parseInt(str_input_nmi.padEnd(10,"0"));
+	//data.NMI = str_input_nmi;
+	let int_input_nmi_pad:number = Number.parseInt(str_input_nmi.padEnd(11,"0"));
 
 	let int_calc_index: number;
 	try {
@@ -72,18 +69,6 @@ addEventListener('fetch', (event: FetchEvent) => {
 	data.StateTerritory = nmi_info[int_calc_index].state;
 	data.OutageLink = nmi_info[int_calc_index].Website;
 	data.Distributor = nmi_info[int_calc_index].Provider_name;
-
-	if (data.StateTerritory === ""){
-		data.StateTerritory = "no Data";
-	} 
-	if (data.OutageLink === ""){
-		data.OutageLink = "no Data";
-	} 
-	if (data.Distributor  === ""){
-		data.Distributor  = "no Data";
-	} 
-
-
   
 	const json = JSON.stringify(data, null, 2);
   
