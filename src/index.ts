@@ -50,25 +50,17 @@ addEventListener('fetch', (event: FetchEvent) => {
 	//data.NMI = str_input_nmi;
 	let int_input_nmi_pad:number = Number.parseInt(str_input_nmi.padEnd(11,"0"));
 
-	let int_calc_index: number;
-	try {
-		nmi_info.forEach((element, index) => {
-			if (element.Alphafrom.indexOf(str_input_nmi) == 0){
-				int_calc_index = index;
-				throw "break";
-			}
-			if (Number.parseInt(element.NumFrom) <= int_input_nmi_pad && int_input_nmi_pad <= Number.parseInt(element.NumTo) ){
-				int_calc_index = index;
-				throw "break";
-			}})
+	//let int_calc_index: number;
 
-	} catch (e){
-		console.log(e);
-	};
+	const provider_result = nmi_info.find(nmi_data => Number.parseInt(nmi_data.NumFrom) <= int_input_nmi_pad && int_input_nmi_pad <= Number.parseInt(nmi_data.NumTo));
 
-	data.StateTerritory = nmi_info[int_calc_index].state;
-	data.OutageLink = nmi_info[int_calc_index].Website;
-	data.Distributor = nmi_info[int_calc_index].Provider_name;
+	if (!provider_result) {
+	// error handling
+	}
+
+	data.StateTerritory = provider_result.state;
+	data.OutageLink = provider_result.Website;
+	data.Distributor = provider_result.Provider_name;
   
 	const json = JSON.stringify(data, null, 2);
   
