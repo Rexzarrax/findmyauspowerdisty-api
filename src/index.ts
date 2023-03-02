@@ -8,7 +8,7 @@ addEventListener('fetch', (event: FetchEvent) => {
 
 	const nmi_info: Nmi_entry[] = [];
 	const data = {
-		StateTerritory: 'no Data',
+		state: 'no Data',
 		Distributor: 'no Data',
 		OutageLink: 'no Data',
 		NMI:str_input_nmi
@@ -46,11 +46,8 @@ addEventListener('fetch', (event: FetchEvent) => {
 	nmi_info.push({state:"MISC",Provider_name:"Embedded Network Managers - Child NMIs",Alphafrom:"",AlphaToo:"",AlphaExeclude:"",NumFrom:"7102000001",NumTo:"7106999999",Website:"Various sites"})
 	nmi_info.push({state:"MISC",Provider_name:"AEMO Reserved block 1",Alphafrom:"",AlphaToo:"",AlphaExeclude:"",NumFrom:"8801000000",NumTo:"8805999999",Website:"Reserved Block"})
 	nmi_info.push({state:"MISC",Provider_name:"AEMO Reserved block 2",Alphafrom:"",AlphaToo:"",AlphaExeclude:"",NumFrom:"9000000000",NumTo:"9999999999",Website:"Reserved Block"})
-	
-	//data.NMI = str_input_nmi;
-	let int_input_nmi_pad:number = Number.parseInt(str_input_nmi.padEnd(11,"0"));
 
-	//let int_calc_index: number;
+	let int_input_nmi_pad:number = Number.parseInt(str_input_nmi.padEnd(11,"0"));
 
 	const provider_result = nmi_info.find(nmi_data => Number.parseInt(nmi_data.NumFrom) <= int_input_nmi_pad && int_input_nmi_pad <= Number.parseInt(nmi_data.NumTo));
 
@@ -58,9 +55,11 @@ addEventListener('fetch', (event: FetchEvent) => {
 	// error handling
 	}
 
-	data.StateTerritory = provider_result.state;
-	data.OutageLink = provider_result.Website;
-	data.Distributor = provider_result.Provider_name;
+	if (provider_result) {
+		data.state = provider_result.state;
+		data.OutageLink = provider_result.Website;
+		data.Distributor = provider_result.Provider_name;
+	}
   
 	const json = JSON.stringify(data, null, 2);
   
