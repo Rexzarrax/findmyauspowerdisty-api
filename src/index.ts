@@ -37,7 +37,7 @@ addEventListener('fetch', (event: FetchEvent) => {
 		{state:"MISC",Provider_name:"Exempt & Miscellaneous Networks - various",Alphafrom:"NKKKNR0000",AlphaToo:"NKKKNRZZZZ",AlphaExeclude:"",NumFrom:"7102000001",NumTo:"7102999999",Website:"Various sites"},
 		{state:"MISC",Provider_name:"Embedded Network Managers - Child NMIs",Alphafrom:"",AlphaToo:"",AlphaExeclude:"",NumFrom:"7102000001",NumTo:"7106999999",Website:"Various sites"},
 		{state:"MISC",Provider_name:"AEMO Reserved block 1",Alphafrom:"",AlphaToo:"",AlphaExeclude:"",NumFrom:"8801000000",NumTo:"8805999999",Website:"Reserved Block"},
-	{state:"MISC",Provider_name:"AEMO Reserved block 2",Alphafrom:"",AlphaToo:"",AlphaExeclude:"",NumFrom:"9000000000",NumTo:"9999999999",Website:"Reserved Block"},
+		{state:"MISC",Provider_name:"AEMO Reserved block 2",Alphafrom:"",AlphaToo:"",AlphaExeclude:"",NumFrom:"9000000000",NumTo:"9999999999",Website:"Reserved Block"},
 	];
 
 	const data = {
@@ -49,10 +49,11 @@ addEventListener('fetch', (event: FetchEvent) => {
 
 	//Need to add the rest of Ergon's Alphanumeric NMI's
 
-	let int_input_nmi_pad:number = Number.parseInt(str_input_nmi.padEnd(11,"0"));
+	let int_input_nmi_pad:number = Number.parseInt(str_input_nmi.padEnd(10,"0"));
 
-	const provider_result = nmi_info.find(nmi_data => int_input_nmi_pad >= Number.parseInt(nmi_data.NumFrom) && int_input_nmi_pad <= Number.parseInt(nmi_data.NumTo));
-
+	const provider_result = nmi_info.find(nmi_data => 
+		int_input_nmi_pad >= Number.parseInt(nmi_data.NumFrom) && int_input_nmi_pad <= Number.parseInt(nmi_data.NumTo)
+		);
 	if (!provider_result) {
 	// error handling
 	}
