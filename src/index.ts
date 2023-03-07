@@ -3,9 +3,6 @@ addEventListener("fetch", (event: FetchEvent) => {
   event.respondWith(handleRequest(event.request));
 });
 async function handleRequest(request: Request) {
-  const { searchParams } = new URL(request.url);
-  let str_input_nmi: string = searchParams.get("input_nmi");
-
   const nmi_info: Nmi_entry[] = [
     {
       state: "ACT",
@@ -330,6 +327,8 @@ async function handleRequest(request: Request) {
     },
   ];
 
+  const { searchParams } = new URL(request.url);
+  let str_input_nmi: string = searchParams.get("input_nmi");
   const data = {
     state: "no Data",
     Distributor: "no Data",
